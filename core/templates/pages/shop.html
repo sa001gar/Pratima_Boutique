@@ -1,0 +1,668 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+     <!-- Breadcrumb Navigation -->
+    <section class="bg-surface py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="homepage.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-primary font-medium">Shop</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Shop Header -->
+    <section class="py-12 bg-gradient-to-br from-primary-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-playfair text-4xl lg:text-5xl font-semibold text-text-primary mb-4">
+                Curated Collections
+            </h1>
+            <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+                Discover our handpicked selection of premium fashion pieces, each crafted with attention to detail and timeless appeal.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filters and Search Section -->
+    <section class="py-8 bg-surface border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-3">
+                    <button class="filter-btn active" data-category="all">All Collections</button>
+                    <button class="filter-btn" data-category="sarees">Sarees</button>
+                    <button class="filter-btn" data-category="lehengas">Lehengas</button>
+                    <button class="filter-btn" data-category="kurtis">Kurtis</button>
+                    <button class="filter-btn" data-category="western">Western Wear</button>
+                    <button class="filter-btn" data-category="accessories">Accessories</button>
+                </div>
+
+                <!-- Advanced Filters Toggle -->
+                <div class="flex items-center gap-4">
+                    <button class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-colors" onclick="toggleFilters()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z"></path>
+                        </svg>
+                        <span>Filters</span>
+                    </button>
+                    <select class="border border-border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-300">
+                        <option>Sort by: Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest First</option>
+                        <option>Customer Rating</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Advanced Filters Panel -->
+            <div id="filters-panel" class="hidden mt-6 p-6 bg-background rounded-lg border border-border">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Price Range -->
+                    <div>
+                        <h3 class="font-semibold text-text-primary mb-3">Price Range</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Under ₹5,000</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">₹5,000 - ₹15,000</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">₹15,000 - ₹30,000</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Above ₹30,000</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Fabric Type -->
+                    <div>
+                        <h3 class="font-semibold text-text-primary mb-3">Fabric</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Silk</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Cotton</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Georgette</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Chiffon</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Occasion -->
+                    <div>
+                        <h3 class="font-semibold text-text-primary mb-3">Occasion</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Wedding</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Festival</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Party</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">Casual</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Size -->
+                    <div>
+                        <h3 class="font-semibold text-text-primary mb-3">Size</h3>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">XS</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">S</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">M</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-border text-primary focus:ring-primary-300">
+                                <span class="ml-2 text-sm text-text-secondary">L</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mt-6 pt-6 border-t border-border">
+                    <button class="text-text-secondary hover:text-primary transition-colors" onclick="clearFilters()">
+                        Clear All Filters
+                    </button>
+                    <button class="btn-primary" onclick="applyFilters()">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Results Header -->
+            <div class="flex items-center justify-between mb-8">
+                <p class="text-text-secondary">Showing <span class="font-semibold text-text-primary">1-24</span> of <span class="font-semibold text-text-primary">156</span> products</p>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 border border-border rounded-lg hover:bg-surface transition-colors" title="Grid View">
+                        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
+                    </button>
+                    <button class="p-2 border border-border rounded-lg hover:bg-surface transition-colors" title="List View">
+                        <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
+                <!-- Product 1 -->
+                <div class="group cursor-pointer product-card" data-category="sarees" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1458907129813-4b89de70024a" 
+                                 alt="Elegant burgundy silk saree with intricate gold border and traditional motifs" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">New</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">S, M, L</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Royal Silk Saree</h3>
+                            <p class="text-text-secondary text-sm mb-3">Handwoven silk with traditional motifs</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.8 (24 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-semibold text-primary">₹12,999</span>
+                                    <span class="text-sm text-text-secondary line-through">₹15,999</span>
+                                </div>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group cursor-pointer product-card" data-category="lehengas" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1732508531407-ea058467a83d" 
+                                 alt="Stunning bridal lehenga in rose gold with heavy embroidery and beadwork" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.unsplash.com/photo-1729259057553-2584ff8b1b36'; this.onerror=null;">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">Featured</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-warning text-white text-xs rounded">Limited Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">M, L</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Designer Lehenga</h3>
+                            <p class="text-text-secondary text-sm mb-3">Bridal collection with zardozi work</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.9 (18 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-semibold text-primary">₹45,999</span>
+                                </div>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group cursor-pointer product-card" data-category="kurtis" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1650831341400-cccaeaf62898" 
+                                 alt="Contemporary kurti in soft pastel blue with modern geometric prints" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.unsplash.com/photo-1669194890334-a73afd4c5d18'; this.onerror=null;">
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">XS, S, M, L, XL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Contemporary Kurti</h3>
+                            <p class="text-text-secondary text-sm mb-3">Cotton blend with modern prints</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.7 (32 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-semibold text-primary">₹2,499</span>
+                                    <span class="text-sm text-text-secondary line-through">₹3,499</span>
+                                </div>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group cursor-pointer product-card" data-category="western" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1704119141169-ef4683a0991d" 
+                                 alt="Elegant navy blue western dress with sophisticated cut and modern silhouette" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.unsplash.com/photo-1664397943087-a0bc178df15e'; this.onerror=null;">
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">S, M, L</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Elegant Dress</h3>
+                            <p class="text-text-secondary text-sm mb-3">Western wear with contemporary design</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.6 (15 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹4,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group cursor-pointer product-card" data-category="accessories" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1678853815781-ad4946c2b33c" 
+                                 alt="Exquisite gold jewelry set with traditional kundan work and pearls" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Exclusive</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">One Size</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Kundan Jewelry Set</h3>
+                            <p class="text-text-secondary text-sm mb-3">Traditional kundan work with pearls</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.9 (12 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹8,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group cursor-pointer product-card" data-category="sarees" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                                 alt="Beautiful green silk saree with golden zari work and floral patterns" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.unsplash.com/photo-1687030737269-0ac44e1b5a55'; this.onerror=null;">
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">S, M, L</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Emerald Silk Saree</h3>
+                            <p class="text-text-secondary text-sm mb-3">Pure silk with golden zari work</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.8 (19 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹18,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="group cursor-pointer product-card" data-category="kurtis" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg" 
+                                 alt="Stylish printed kurti in vibrant colors with contemporary design elements" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.unsplash.com/photo-1649140336436-f0ede5576a5c'; this.onerror=null;">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-warning text-white px-3 py-1 rounded-full text-sm font-medium">Sale</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">XS, S, M, L</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Printed Kurti</h3>
+                            <p class="text-text-secondary text-sm mb-3">Vibrant prints with contemporary style</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.5 (28 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-2xl font-semibold text-primary">₹1,799</span>
+                                    <span class="text-sm text-text-secondary line-through">₹2,499</span>
+                                </div>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="group cursor-pointer product-card" data-category="western" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                                 alt="Chic western top with modern cut and elegant design details" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.unsplash.com/photo-1704119141169-ef4683a0991d'; this.onerror=null;">
+                            <div class="absolute top-4 right-4">
+                                <button class="p-2 bg-white/80 rounded-full hover:bg-white transition-colors wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this)">
+                                    <svg class="w-5 h-5 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <span class="px-2 py-1 bg-success text-white text-xs rounded">In Stock</span>
+                                    <span class="px-2 py-1 bg-surface/80 text-text-secondary text-xs rounded">S, M, L, XL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Chic Western Top</h3>
+                            <p class="text-text-secondary text-sm mb-3">Modern cut with elegant details</p>
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center">
+                                    <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm text-text-secondary">4.4 (21 reviews)</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹3,299</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors" onclick="event.stopPropagation(); addToCart(this)">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="btn-secondary" onclick="loadMoreProducts()">
+                    Load More Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed Section -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="font-playfair text-3xl font-semibold text-text-primary">Recently Viewed</h2>
+                <button class="text-primary hover:text-primary-600 font-medium">Clear All</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Recently Viewed Item 1 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-lg overflow-hidden shadow-elegant group-hover:shadow-luxury transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3" 
+                                 alt="Previously viewed burgundy silk saree with gold border" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair text-lg font-semibold text-text-primary mb-1">Royal Silk Saree</h3>
+                            <p class="text-primary font-semibold">₹12,999</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Item 2 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-lg overflow-hidden shadow-elegant group-hover:shadow-luxury transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" 
+                                 alt="Previously viewed contemporary kurti in pastel colors" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair text-lg font-semibold text-text-primary mb-1">Contemporary Kurti</h3>
+                            <p class="text-primary font-semibold">₹2,499</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Item 3 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-lg overflow-hidden shadow-elegant group-hover:shadow-luxury transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1652034277430-48daef4a6d9a" 
+                                 alt="Previously viewed kundan jewelry set with traditional design" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair text-lg font-semibold text-text-primary mb-1">Kundan Jewelry Set</h3>
+                            <p class="text-primary font-semibold">₹8,999</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Item 4 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-lg overflow-hidden shadow-elegant group-hover:shadow-luxury transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.0.3" 
+                                 alt="Previously viewed elegant western dress in navy blue" 
+                                 class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-playfair text-lg font-semibold text-text-primary mb-1">Elegant Dress</h3>
+                            <p class="text-primary font-semibold">₹4,999</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-center">
+                <div class="flex items-center space-x-2">
+                    <button class="px-3 py-2 text-text-secondary hover:text-primary border border-border rounded-lg hover:bg-surface transition-colors" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button class="px-4 py-2 bg-primary text-white rounded-lg">1</button>
+                    <button class="px-4 py-2 text-text-secondary hover:text-primary border border-border rounded-lg hover:bg-surface transition-colors">2</button>
+                    <button class="px-4 py-2 text-text-secondary hover:text-primary border border-border rounded-lg hover:bg-surface transition-colors">3</button>
+                    <span class="px-4 py-2 text-text-secondary">...</span>
+                    <button class="px-4 py-2 text-text-secondary hover:text-primary border border-border rounded-lg hover:bg-surface transition-colors">7</button>
+                    <button class="px-3 py-2 text-text-secondary hover:text-primary border border-border rounded-lg hover:bg-surface transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </section>
+{% endblock %}

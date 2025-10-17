@@ -1,0 +1,215 @@
+{% load static %}
+<!-- New Arrivals Section -->
+<section class="pb-12 lg:pb-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="flex justify-between items-start mb-8 lg:mb-12">
+            <div>
+                <h2 class="font-playfair text-3xl lg:text-4xl font-semibold text-text-primary mb-2">
+                    New Arrivals
+                </h2>
+                <p class="text-base lg:text-lg text-text-secondary">
+                    Discover the latest additions to our curated collection
+                </p>
+            </div>
+            <a href="shop.html" class="text-secondary font-medium hover:text-secondary-600 transition-colors flex items-center gap-2">
+                View All
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            
+            <!-- Product 1 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_1.webp' %}" 
+                             alt="Royal Silk Saree" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                        <div class="absolute top-2 left-2 lg:top-4 lg:left-4">
+                            <span class="bg-secondary text-white px-2 py-1 lg:px-3 lg:py-1 rounded-full text-xs font-medium">New</span>
+                        </div>
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Royal Silk Saree</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Handwoven silk with traditional motifs</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹12,999</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_2.webp' %}" 
+                             alt="Designer Lehenga" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg'; this.onerror=null;">
+                        <div class="absolute top-2 left-2 lg:top-4 lg:left-4">
+                            <span class="bg-secondary text-white px-2 py-1 lg:px-3 lg:py-1 rounded-full text-xs font-medium">Featured</span>
+                        </div>
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Designer Lehenga</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Bridal collection with zardozi work</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹45,999</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_3.webp' %}" 
+                             alt="Contemporary Kurti" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Contemporary Kurti</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Cotton blend with modern prints</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹2,499</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_4.webp' %}" 
+                             alt="Elegant Dress" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Elegant Dress</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Western wear with contemporary design</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹4,999</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_5.webp' %}" 
+                             alt="Anarkali Suit" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                        <div class="absolute top-2 left-2 lg:top-4 lg:left-4">
+                            <span class="bg-secondary text-white px-2 py-1 lg:px-3 lg:py-1 rounded-full text-xs font-medium">Sale</span>
+                        </div>
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Anarkali Suit</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Flowing anarkali with embroidery</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹8,499</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_6.webp' %}" 
+                             alt="Banarasi Saree" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg'; this.onerror=null;">
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Banarasi Saree</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Pure silk with traditional brocade</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹18,999</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_7.webp' %}" 
+                             alt="Printed Kurti Set" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Printed Kurti Set</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Vibrant printed kurti with palazzo</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹3,299</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="group cursor-pointer">
+                <div class="bg-surface rounded-xl lg:rounded-2xl overflow-hidden shadow-elegant hover:shadow-luxury transition-all duration-300">
+                    <div class="relative overflow-hidden aspect-[3/4]">
+                        <img src="{% static 'images/includes/home/New Arrivals/new_8.webp' %}" 
+                             alt="Evening Gown" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                             onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                        <div class="absolute top-2 left-2 lg:top-4 lg:left-4">
+                            <span class="bg-secondary text-white px-2 py-1 lg:px-3 lg:py-1 rounded-full text-xs font-medium">Trending</span>
+                        </div>
+                    </div>
+                    <div class="p-3 lg:p-5">
+                        <h3 class="font-playfair text-base lg:text-lg font-semibold text-text-primary mb-1 lg:mb-2">Evening Gown</h3>
+                        <p class="text-text-secondary text-xs lg:text-sm mb-3 lg:mb-4 line-clamp-2">Luxurious evening gown with details</p>
+                        <div class="flex justify-between items-end">
+                            <span class="text-lg lg:text-xl font-semibold text-secondary">₹15,999</span>
+                            <button class="bg-secondary text-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-secondary-600 transition-colors">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

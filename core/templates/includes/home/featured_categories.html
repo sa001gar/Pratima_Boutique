@@ -1,0 +1,180 @@
+{% load static %}
+<!-- Featured Categories Section -->
+<section class="py-12 lg:py-20 bg-background" x-data="categorySlider()">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-10 lg:mb-16">
+            <h2 class="font-playfair text-3xl lg:text-4xl font-semibold text-text-primary mb-4">
+                Shop by Category
+            </h2>
+            <p class="text-base lg:text-lg text-text-secondary max-w-2xl mx-auto">
+                Explore our diverse collection of traditional and contemporary Indian fashion
+            </p>
+        </div>
+
+        <!-- Desktop Grid (hidden on mobile) -->
+        <div class="hidden md:grid md:grid-cols-4 lg:grid-cols-8 gap-6 lg:gap-8">
+            <!-- Row 1 -->
+            <a href="#suit-pant" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Suit-Pant.jpg' %}" 
+                         alt="Suit Pant" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Suit Pant</h3>
+            </a>
+
+            <a href="#palazzo-suit" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Palazzo-Suit.jpg' %}" 
+                         alt="Palazzo Suit" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Palazzo Suit</h3>
+            </a>
+
+            <a href="#suit-salwar" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Suit-Salwar.jpg' %}" 
+                         alt="Suit Salwar" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/3585089/pexels-photo-3585089.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Suit Salwar</h3>
+            </a>
+
+            <a href="#blouse" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Blouse.jpg' %}" 
+                         alt="Blouse" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Blouse</h3>
+            </a>
+
+            <a href="#padded-blouse" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Padded-Blouse.jpg' %}" 
+                         alt="Padded Blouse" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Padded Blouse</h3>
+            </a>
+
+            <a href="#crop-top" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Crop-Top.jpg' %}" 
+                         alt="Crop Top" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Crop Top</h3>
+            </a>
+
+            <a href="#kurti" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Kurti.jpg' %}" 
+                         alt="Kurti" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Kurti</h3>
+            </a>
+
+            <a href="#western-dress" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Western-Dress.jpg' %}" 
+                         alt="Western Dress" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Western Dress</h3>
+            </a>
+
+            <!-- Row 2 -->
+            <a href="#sharara" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Sharara.jpg' %}" 
+                         alt="Sharara" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Sharara</h3>
+            </a>
+
+            <a href="#garara" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Garara.jpg' %}" 
+                         alt="Garara" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/3585089/pexels-photo-3585089.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Garara</h3>
+            </a>
+
+            <a href="#anarkali-dress" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Anarkali-Dress.jpg' %}" 
+                         alt="Anarkali Dress" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Anarkali Dress</h3>
+            </a>
+
+            <a href="#lehenga-choli" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Lehenga-Choli.jpg' %}" 
+                         alt="Lehenga Choli" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Lehenga Choli</h3>
+            </a>
+
+            <a href="#semi-stitched-lehenga" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Semi-Stitched-Lehenga.jpg' %}" 
+                         alt="Semi Stitched Lehenga" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Semi Stitched Lehenga</h3>
+            </a>
+
+            <a href="#gown" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Gown.jpg' %}" 
+                         alt="Gown" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Gown</h3>
+            </a>
+
+            <a href="#stitched-saree" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Stitched-Saree.jpg' %}" 
+                         alt="Stitched Saree" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Stitched Saree</h3>
+            </a>
+
+            <a href="#maxi-dress" class="group flex flex-col items-center text-center transition-transform hover:scale-105">
+                <div class="relative w-28 h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden shadow-elegant hover:shadow-luxury transition-shadow duration-300 mb-3">
+                    <img src="{% static 'images/includes/home/featured/Maxi-Dress.jpg' %}" 
+                         alt="Maxi Dress" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                         onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                </div>
+                <h3 class="font-medium text-sm lg:text-base text-text-primary group-hover:text-primary transition-colors">Maxi Dress</h3>
+            </a>
+        </div>
+    </div>
+</section>

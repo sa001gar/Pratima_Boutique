@@ -1,0 +1,1290 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Breadcrumb Navigation -->
+    <section class="bg-surface py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="homepage.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <a href="shop.html" class="text-text-secondary hover:text-primary transition-colors">Shop</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <a href="shop.html" class="text-text-secondary hover:text-primary transition-colors">Sarees</a>
+                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-primary font-medium">Royal Silk Saree</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="py-8 lg:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Product Images -->
+                <div class="space-y-4">
+                    <!-- Main Image -->
+                    <div class="relative">
+                        <div class="aspect-w-4 aspect-h-5 rounded-2xl overflow-hidden shadow-luxury">
+                            <img id="main-image" src="https://images.unsplash.com/photo-1687030737269-0ac44e1b5a55" 
+                                 alt="Royal Silk Saree in deep burgundy with intricate gold border and traditional motifs" 
+                                 class="w-full h-full object-cover cursor-zoom-in"
+                                 onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;"
+                                 onclick="openImageModal(this.src)">
+                        </div>
+                        <!-- Zoom Icon -->
+                        <button onclick="openImageModal(document.getElementById('main-image').src)" 
+                                class="absolute top-4 right-4 bg-white/90 p-2 rounded-full shadow-luxury hover:bg-white transition-colors">
+                            <svg class="w-5 h-5 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                        <!-- 360° View Badge -->
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">360° View</span>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail Images -->
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden cursor-pointer border-2 border-primary" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1609210616583-8037336eb47d" 
+                                 alt="Royal Silk Saree front view showing full drape and design" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1589734750443-06dbd51c0447" 
+                                 alt="Close-up detail of intricate gold embroidery and traditional motifs on saree border" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1722057436642-7fc39718ea38" 
+                                 alt="Saree fabric texture showing silk quality and weave pattern" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden cursor-pointer border-2 border-transparent hover:border-primary transition-colors" onclick="changeMainImage(this)">
+                            <img src="https://images.unsplash.com/photo-1624965629606-54b95be217fa" 
+                                 alt="Artisan hands working on traditional embroidery showing craftsmanship process" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.src='https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="space-y-8">
+                    <!-- Product Title and Price -->
+                    <div>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Heritage Collection</span>
+                            <span class="bg-success text-white px-3 py-1 rounded-full text-sm font-medium">In Stock</span>
+                        </div>
+                        <h1 class="font-playfair text-3xl lg:text-4xl font-semibold text-text-primary mb-4">
+                            Royal Silk Saree
+                        </h1>
+                        <p class="text-lg text-text-secondary mb-6">
+                            Handwoven silk saree with traditional motifs and intricate gold border work, crafted by master artisans from Varanasi
+                        </p>
+                        <div class="flex items-center space-x-4 mb-6">
+                            <span class="text-3xl font-semibold text-primary">₹12,999</span>
+                            <span class="text-xl text-text-secondary line-through">₹16,999</span>
+                            <span class="bg-error text-white px-3 py-1 rounded-full text-sm font-medium">24% OFF</span>
+                        </div>
+                        <!-- Rating -->
+                        <div class="flex items-center space-x-2 mb-6">
+                            <div class="flex">
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                            </div>
+                            <span class="text-text-secondary">4.8 (127 reviews)</span>
+                            <a href="#reviews" class="text-primary hover:text-primary-600 font-medium">Read Reviews</a>
+                        </div>
+                    </div>
+
+                    <!-- Color Selection -->
+                    <div>
+                        <h3 class="font-semibold text-lg mb-4">Available Colors</h3>
+                        <div class="flex space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-red-800 border-2 border-primary cursor-pointer"></div>
+                            <div class="w-12 h-12 rounded-full bg-blue-900 border-2 border-transparent hover:border-primary cursor-pointer transition-colors"></div>
+                            <div class="w-12 h-12 rounded-full bg-green-800 border-2 border-transparent hover:border-primary cursor-pointer transition-colors"></div>
+                            <div class="w-12 h-12 rounded-full bg-purple-800 border-2 border-transparent hover:border-primary cursor-pointer transition-colors"></div>
+                        </div>
+                    </div>
+
+                    <!-- Size Selection -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold text-lg">Size</h3>
+                            <button onclick="openSizeGuide()" class="text-primary hover:text-primary-600 font-medium text-sm">Size Guide</button>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button class="border-2 border-primary bg-primary text-white py-3 px-4 rounded-lg font-medium">Free Size</button>
+                            <button class="border-2 border-border hover:border-primary py-3 px-4 rounded-lg font-medium transition-colors">Custom</button>
+                            <button class="border-2 border-border hover:border-primary py-3 px-4 rounded-lg font-medium transition-colors">Petite</button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity and Actions -->
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold text-lg mb-4">Quantity</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center border border-border rounded-lg">
+                                    <button onclick="decreaseQuantity()" class="p-3 hover:bg-surface transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                                        </svg>
+                                    </button>
+                                    <span id="quantity" class="px-4 py-3 font-medium">1</span>
+                                    <button onclick="increaseQuantity()" class="p-3 hover:bg-surface transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <span class="text-text-secondary">Only 3 left in stock</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="addToCart()" class="btn-primary flex-1 flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13v6a2 2 0 002 2h6a2 2 0 002-2v-6"></path>
+                                </svg>
+                                Add to Cart
+                            </button>
+                            <button onclick="addToWishlist()" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                                Wishlist
+                            </button>
+                        </div>
+
+                        <!-- Buy Now Button -->
+                        <button onclick="window.location.href='checkout.html'" class="w-full bg-secondary text-white py-4 rounded-lg font-medium text-lg hover:bg-secondary-600 transition-colors">
+                            Buy Now - Express Checkout
+                        </button>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-border">
+                        <div class="text-center">
+                            <svg class="w-8 h-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <p class="text-sm font-medium">Authentic</p>
+                        </div>
+                        <div class="text-center">
+                            <svg class="w-8 h-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            <p class="text-sm font-medium">7-Day Return</p>
+                        </div>
+                        <div class="text-center">
+                            <svg class="w-8 h-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                            </svg>
+                            <p class="text-sm font-medium">Free Shipping</p>
+                        </div>
+                        <div class="text-center">
+                            <svg class="w-8 h-8 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            </svg>
+                            <p class="text-sm font-medium">Secure Payment</p>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Information -->
+                    <div class="bg-surface p-6 rounded-2xl">
+                        <h3 class="font-semibold text-lg mb-4">Delivery Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span class="text-text-secondary">Deliver to: Mumbai, Maharashtra</span>
+                                <button class="text-primary hover:text-primary-600 font-medium text-sm">Change</button>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-text-secondary">Free delivery by <strong>Oct 18, 2025</strong></span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-text-secondary">Express delivery available (₹199)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Tabs -->
+    <section class="py-12 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Tab Navigation -->
+            <div class="border-b border-border mb-8">
+                <nav class="flex space-x-8">
+                    <button onclick="showTab('description')" id="tab-description" class="py-4 px-1 border-b-2 border-primary text-primary font-medium">
+                        Description
+                    </button>
+                    <button onclick="showTab('specifications')" id="tab-specifications" class="py-4 px-1 border-b-2 border-transparent text-text-secondary hover:text-primary transition-colors">
+                        Specifications
+                    </button>
+                    <button onclick="showTab('care')" id="tab-care" class="py-4 px-1 border-b-2 border-transparent text-text-secondary hover:text-primary transition-colors">
+                        Care Instructions
+                    </button>
+                    <button onclick="showTab('story')" id="tab-story" class="py-4 px-1 border-b-2 border-transparent text-text-secondary hover:text-primary transition-colors">
+                        Craftsmanship Story
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="content-description" class="tab-content">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-playfair text-2xl font-semibold mb-6">Product Description</h3>
+                        <div class="prose prose-lg text-text-secondary space-y-4">
+                            <p>
+                                Immerse yourself in the timeless elegance of our Royal Silk Saree, a masterpiece that embodies the rich heritage of Indian textile artistry. This exquisite piece is handwoven by master craftsmen in Varanasi, using traditional techniques passed down through generations.
+                            </p>
+                            <p>
+                                The deep burgundy silk base creates a stunning canvas for the intricate gold border work, featuring traditional motifs inspired by Mughal architecture. Each thread tells a story of dedication, skill, and artistic vision, making this saree not just a garment, but a piece of wearable art.
+                            </p>
+                            <p>
+                                Perfect for weddings, festivals, and special occasions, this saree drapes beautifully and flatters all body types. The lustrous silk fabric catches light magnificently, ensuring you'll be the center of attention at any gathering.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-playfair text-2xl font-semibold mb-6">Key Features</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-text-secondary">100% Pure Silk fabric sourced from premium silk farms</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-text-secondary">Handwoven by master artisans in Varanasi</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-text-secondary">Intricate gold zari work with traditional motifs</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-text-secondary">Comes with matching blouse piece</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <svg class="w-5 h-5 text-primary mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-text-secondary">Suitable for all seasons and occasions</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-specifications" class="tab-content hidden">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-playfair text-2xl font-semibold mb-6">Technical Specifications</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Fabric</span>
+                                <span class="text-text-secondary">100% Pure Silk</span>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Length</span>
+                                <span class="text-text-secondary">5.5 meters</span>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Blouse Piece</span>
+                                <span class="text-text-secondary">0.8 meters (included)</span>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Weight</span>
+                                <span class="text-text-secondary">650 grams</span>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Weave Type</span>
+                                <span class="text-text-secondary">Handloom</span>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Border Width</span>
+                                <span class="text-text-secondary">4 inches</span>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-border">
+                                <span class="font-medium">Origin</span>
+                                <span class="text-text-secondary">Varanasi, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-playfair text-2xl font-semibold mb-6">Size & Fit Guide</h3>
+                        <div class="bg-primary-50 p-6 rounded-2xl">
+                            <h4 class="font-semibold mb-4">Free Size Details</h4>
+                            <p class="text-text-secondary mb-4">
+                                This saree is designed to fit all body types beautifully. The standard length and width accommodate various draping styles.
+                            </p>
+                            <ul class="space-y-2 text-text-secondary">
+                                <li>• Suitable for heights: 5'0" to 6'0"</li>
+                                <li>• Adjustable draping for all body types</li>
+                                <li>• Blouse can be tailored to your measurements</li>
+                                <li>• Professional draping service available</li>
+                            </ul>
+                            <button onclick="openSizeGuide()" class="mt-4 text-primary hover:text-primary-600 font-medium">
+                                View Detailed Size Guide →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-care" class="tab-content hidden">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-playfair text-2xl font-semibold mb-6">Care Instructions</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary-100 p-3 rounded-full">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Dry Clean Only</h4>
+                                    <p class="text-text-secondary">Professional dry cleaning is recommended to maintain the silk's luster and intricate embroidery work.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary-100 p-3 rounded-full">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Avoid Direct Sunlight</h4>
+                                    <p class="text-text-secondary">Store in a cool, dry place away from direct sunlight to prevent color fading.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-primary-100 p-3 rounded-full">
+                                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM7 3H5a2 2 0 00-2 2v12a4 4 0 004 4h2a2 2 0 002-2V5a2 2 0 00-2-2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Proper Storage</h4>
+                                    <p class="text-text-secondary">Fold carefully with acid-free tissue paper or hang on padded hangers to maintain shape.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-playfair text-2xl font-semibold mb-6">Maintenance Tips</h3>
+                        <div class="bg-accent-50 p-6 rounded-2xl">
+                            <h4 class="font-semibold mb-4">Long-term Care</h4>
+                            <ul class="space-y-3 text-text-secondary">
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary">•</span>
+                                    <span>Air the saree occasionally to prevent mustiness</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary">•</span>
+                                    <span>Use mothballs or neem leaves to protect from insects</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary">•</span>
+                                    <span>Avoid contact with perfumes and deodorants</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary">•</span>
+                                    <span>Handle with clean, dry hands to avoid stains</span>
+                                </li>
+                                <li class="flex items-start space-x-2">
+                                    <span class="text-primary">•</span>
+                                    <span>Professional cleaning every 6-8 wears recommended</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-story" class="tab-content hidden">
+                <div class="space-y-12">
+                    <div class="text-center">
+                        <h3 class="font-playfair text-3xl font-semibold mb-6">The Story Behind Your Saree</h3>
+                        <p class="text-lg text-text-secondary max-w-3xl mx-auto">
+                            Every thread in this Royal Silk Saree carries the legacy of centuries-old craftsmanship, woven with passion and precision by master artisans in the holy city of Varanasi.
+                        </p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1624965629606-54b95be217fa" 
+                                 alt="Master artisan working on traditional silk weaving loom in Varanasi workshop" 
+                                 class="w-full h-96 object-cover rounded-2xl shadow-luxury"
+                                 onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div>
+                            <h4 class="font-playfair text-2xl font-semibold mb-4">The Artisan's Touch</h4>
+                            <p class="text-text-secondary mb-6">
+                                Meet Ramesh Kumar, a third-generation silk weaver whose family has been creating exquisite sarees for over 75 years. His skilled hands have woven magic into your saree, spending over 45 days perfecting every detail.
+                            </p>
+                            <p class="text-text-secondary mb-6">
+                                The intricate gold zari work you see is hand-embroidered using real gold and silver threads, following patterns that have been passed down through generations. Each motif tells a story from ancient Indian mythology and Mughal heritage.
+                            </p>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">45</div>
+                                    <div class="text-sm text-text-secondary">Days to Create</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">3</div>
+                                    <div class="text-sm text-text-secondary">Generations</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary">100%</div>
+                                    <div class="text-sm text-text-secondary">Handmade</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="lg:order-2">
+                            <img src="https://images.unsplash.com/photo-1609803987666-4893656c7e00" 
+                                 alt="Close-up of silk threads being dyed in traditional colors using natural dyes" 
+                                 class="w-full h-96 object-cover rounded-2xl shadow-luxury"
+                                 onerror="this.src='https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="lg:order-1">
+                            <h4 class="font-playfair text-2xl font-semibold mb-4">From Cocoon to Couture</h4>
+                            <p class="text-text-secondary mb-6">
+                                The journey begins with the finest mulberry silk cocoons, carefully selected for their quality and luster. The silk is then dyed using traditional methods with natural colors that have been used for centuries.
+                            </p>
+                            <p class="text-text-secondary mb-6">
+                                The deep burgundy color you see is achieved through a complex process involving natural indigo and madder root, creating a rich, lasting hue that improves with age. This eco-friendly dyeing process ensures the colors remain vibrant for generations.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl lg:text-4xl font-semibold text-text-primary mb-4">
+                    Customer Reviews
+                </h2>
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <div class="flex">
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-semibold">4.8</span>
+                    <span class="text-text-secondary">Based on 127 reviews</span>
+                </div>
+            </div>
+
+            <!-- Review Summary -->
+            <div class="bg-surface p-8 rounded-2xl mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div class="md:col-span-2">
+                        <h3 class="font-semibold text-lg mb-4">Rating Breakdown</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm w-8">5★</span>
+                                <div class="flex-1 bg-border rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 78%"></div>
+                                </div>
+                                <span class="text-sm text-text-secondary w-8">78%</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm w-8">4★</span>
+                                <div class="flex-1 bg-border rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 15%"></div>
+                                </div>
+                                <span class="text-sm text-text-secondary w-8">15%</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm w-8">3★</span>
+                                <div class="flex-1 bg-border rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 5%"></div>
+                                </div>
+                                <span class="text-sm text-text-secondary w-8">5%</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm w-8">2★</span>
+                                <div class="flex-1 bg-border rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 1%"></div>
+                                </div>
+                                <span class="text-sm text-text-secondary w-8">1%</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-sm w-8">1★</span>
+                                <div class="flex-1 bg-border rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 1%"></div>
+                                </div>
+                                <span class="text-sm text-text-secondary w-8">1%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h3 class="font-semibold text-lg mb-4">What Customers Love</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-primary-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary">95%</div>
+                                <div class="text-sm text-text-secondary">Quality</div>
+                            </div>
+                            <div class="text-center p-4 bg-primary-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary">92%</div>
+                                <div class="text-sm text-text-secondary">Fit</div>
+                            </div>
+                            <div class="text-center p-4 bg-primary-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary">89%</div>
+                                <div class="text-sm text-text-secondary">Value</div>
+                            </div>
+                            <div class="text-center p-4 bg-primary-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary">96%</div>
+                                <div class="text-sm text-text-secondary">Recommend</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Reviews -->
+            <div class="space-y-8">
+                <!-- Review 1 -->
+                <div class="bg-surface p-8 rounded-2xl">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://images.unsplash.com/photo-1609210616583-8037336eb47d" 
+                             alt="Customer Priya Sharma wearing the Royal Silk Saree at a wedding celebration" 
+                             class="w-16 h-16 rounded-full object-cover"
+                             onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <div>
+                                    <h4 class="font-semibold">Priya Sharma</h4>
+                                    <p class="text-sm text-text-secondary">Verified Purchase • Mumbai</p>
+                                </div>
+                                <div class="flex">
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h5 class="font-semibold mb-2">Absolutely Stunning Quality!</h5>
+                            <p class="text-text-secondary mb-4">
+                                I wore this saree to my cousin's wedding and received countless compliments. The silk quality is exceptional, and the gold work is so intricate. The color is exactly as shown in the pictures. The draping was perfect, and I felt like a queen! Definitely worth every penny.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                <span>Purchased: Oct 5, 2025</span>
+                                <span>•</span>
+                                <span>Size: Free Size</span>
+                                <span>•</span>
+                                <span>Color: Burgundy</span>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-4">
+                                <button class="text-primary hover:text-primary-600 text-sm font-medium">Helpful (24)</button>
+                                <button class="text-text-secondary hover:text-primary text-sm">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-surface p-8 rounded-2xl">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://images.unsplash.com/photo-1609210616583-8037336eb47d" 
+                             alt="Customer Anita Desai showcasing the saree's beautiful drape and fit" 
+                             class="w-16 h-16 rounded-full object-cover"
+                             onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <div>
+                                    <h4 class="font-semibold">Anita Desai</h4>
+                                    <p class="text-sm text-text-secondary">Verified Purchase • Delhi</p>
+                                </div>
+                                <div class="flex">
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-border" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h5 class="font-semibold mb-2">Perfect for Special Occasions</h5>
+                            <p class="text-text-secondary mb-4">
+                                The craftsmanship is remarkable! You can tell this is handmade with love and attention to detail. The silk feels luxurious and the weight is perfect - not too heavy, not too light. I've worn it twice now and both times people asked where I got it from. Will definitely be ordering more from Pratima Boutique.
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                <span>Purchased: Sep 28, 2025</span>
+                                <span>•</span>
+                                <span>Size: Free Size</span>
+                                <span>•</span>
+                                <span>Color: Burgundy</span>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-4">
+                                <button class="text-primary hover:text-primary-600 text-sm font-medium">Helpful (18)</button>
+                                <button class="text-text-secondary hover:text-primary text-sm">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-surface p-8 rounded-2xl">
+                    <div class="flex items-start space-x-4">
+                        <img src="https://images.unsplash.com/photo-1735553816769-7d30e5b1a19a" 
+                             alt="Customer Kavya Patel displaying the intricate gold work and embroidery details" 
+                             class="w-16 h-16 rounded-full object-cover"
+                             onerror="this.src='https://images.pixabay.com/photos/2020/10/08/17/39/indian-5638711_1280.jpg'; this.onerror=null;">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <div>
+                                    <h4 class="font-semibold">Kavya Patel</h4>
+                                    <p class="text-sm text-text-secondary">Verified Purchase • Bangalore</p>
+                                </div>
+                                <div class="flex">
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h5 class="font-semibold mb-2">Exceeded My Expectations!</h5>
+                            <p class="text-text-secondary mb-4">
+                                I was initially hesitant to buy such an expensive saree online, but I'm so glad I did! The packaging was beautiful, and the saree is even more gorgeous in person. The gold work is so detailed and the silk has a beautiful sheen. Fast delivery and excellent customer service. Highly recommend!
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                <span>Purchased: Oct 1, 2025</span>
+                                <span>•</span>
+                                <span>Size: Free Size</span>
+                                <span>•</span>
+                                <span>Color: Burgundy</span>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-4">
+                                <button class="text-primary hover:text-primary-600 text-sm font-medium">Helpful (31)</button>
+                                <button class="text-text-secondary hover:text-primary text-sm">Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Write Review Button -->
+            <div class="text-center mt-12">
+                <button onclick="openReviewModal()" class="btn-primary">
+                    Write a Review
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products Section -->
+    <section class="py-16 lg:py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl lg:text-4xl font-semibold text-text-primary mb-4">
+                    Complete the Look
+                </h2>
+                <p class="text-lg text-text-secondary">
+                    Perfectly curated accessories and complementary pieces
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Related Product 1 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1603423573864-9ab936e4b934" 
+                                 alt="Matching gold jewelry set with traditional earrings and necklace" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Traditional Gold Set</h3>
+                            <p class="text-text-secondary text-sm mb-4">Matching jewelry for your saree</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹8,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1732508531407-ea058467a83d" 
+                                 alt="Designer blouse with intricate embroidery matching the saree style" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Designer Blouse</h3>
+                            <p class="text-text-secondary text-sm mb-4">Custom tailored to perfection</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹3,499</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1665607260997-999703098eef" 
+                                 alt="Elegant clutch purse in matching burgundy color with gold accents" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Silk Clutch</h3>
+                            <p class="text-text-secondary text-sm mb-4">Perfect evening accessory</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹1,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-background rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1669195215876-0acc61f8195f" 
+                                 alt="Traditional footwear with gold embellishments perfect for saree styling" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Traditional Footwear</h3>
+                            <p class="text-text-secondary text-sm mb-4">Handcrafted with gold details</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹2,799</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recently Viewed Section -->
+    <section class="py-16 lg:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-12">
+                <div>
+                    <h2 class="font-playfair text-3xl lg:text-4xl font-semibold text-text-primary mb-4">
+                        Recently Viewed
+                    </h2>
+                    <p class="text-lg text-text-secondary">
+                        Continue exploring your favorite pieces
+                    </p>
+                </div>
+                <a href="shop.html" class="hidden sm:inline-flex items-center text-primary hover:text-primary-600 font-medium">
+                    View All
+                    <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Recently Viewed Product 1 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1698156581290-03689df66ee7" 
+                                 alt="Designer lehenga with intricate embroidery in rose gold previously viewed" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/8839887/pexels-photo-8839887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Designer Lehenga</h3>
+                            <p class="text-text-secondary text-sm mb-4">Bridal collection with zardozi work</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹45,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Product 2 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1699437236152-3f0deae6a3ca" 
+                                 alt="Contemporary kurti in soft pastel with modern prints from recent browsing" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pixabay.com/photos/2017/08/01/11/48/woman-2564660_1280.jpg'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Contemporary Kurti</h3>
+                            <p class="text-text-secondary text-sm mb-4">Cotton blend with modern prints</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹2,499</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Product 3 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1704119141169-ef4683a0991d" 
+                                 alt="Elegant western dress in navy blue with sophisticated cut from browsing history" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Elegant Dress</h3>
+                            <p class="text-text-secondary text-sm mb-4">Western wear with contemporary design</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹4,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recently Viewed Product 4 -->
+                <div class="group cursor-pointer" onclick="window.location.href='product_detail.html'">
+                    <div class="bg-surface rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1697925493572-a8da651b0c12" 
+                                 alt="Exquisite jewelry collection featuring traditional and contemporary accessories from recent views" 
+                                 class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                                 onerror="this.src='https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'; this.onerror=null;">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-playfair text-xl font-semibold text-text-primary mb-2">Pearl Necklace Set</h3>
+                            <p class="text-text-secondary text-sm mb-4">Elegant pearl jewelry collection</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-semibold text-primary">₹6,999</span>
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Image Zoom Modal -->
+    <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div class="relative max-w-4xl max-h-full">
+            <img id="modal-image" src="" alt="Zoomed product image" class="max-w-full max-h-full object-contain">
+            <button onclick="closeImageModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Size Guide Modal -->
+    <div id="size-guide-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-full overflow-y-auto">
+            <div class="p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-playfair text-2xl font-semibold">Size Guide</h3>
+                    <button onclick="closeSizeGuide()" class="text-text-secondary hover:text-text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-semibold mb-4">Saree Measurements</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse border border-border">
+                                <thead>
+                                    <tr class="bg-surface">
+                                        <th class="border border-border p-3 text-left">Measurement</th>
+                                        <th class="border border-border p-3 text-left">Standard</th>
+                                        <th class="border border-border p-3 text-left">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-border p-3">Length</td>
+                                        <td class="border border-border p-3">5.5 meters</td>
+                                        <td class="border border-border p-3">Full saree length</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-border p-3">Width</td>
+                                        <td class="border border-border p-3">1.2 meters</td>
+                                        <td class="border border-border p-3">Saree width</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-border p-3">Blouse Piece</td>
+                                        <td class="border border-border p-3">0.8 meters</td>
+                                        <td class="border border-border p-3">Unstitched blouse fabric</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">How to Measure</h4>
+                        <ul class="space-y-2 text-text-secondary">
+                            <li>• Height: Measure from head to toe</li>
+                            <li>• Bust: Measure around the fullest part</li>
+                            <li>• Waist: Measure around the narrowest part</li>
+                            <li>• Hip: Measure around the fullest part</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-full overflow-y-auto">
+            <div class="p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-playfair text-2xl font-semibold">Write a Review</h3>
+                    <button onclick="closeReviewModal()" class="text-text-secondary hover:text-text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Rating</label>
+                        <div class="flex space-x-1">
+                            <button type="button" onclick="setRating(1)" class="star-rating text-2xl text-border hover:text-primary">★</button>
+                            <button type="button" onclick="setRating(2)" class="star-rating text-2xl text-border hover:text-primary">★</button>
+                            <button type="button" onclick="setRating(3)" class="star-rating text-2xl text-border hover:text-primary">★</button>
+                            <button type="button" onclick="setRating(4)" class="star-rating text-2xl text-border hover:text-primary">★</button>
+                            <button type="button" onclick="setRating(5)" class="star-rating text-2xl text-border hover:text-primary">★</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Review Title</label>
+                        <input type="text" class="w-full border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Give your review a title">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Your Review</label>
+                        <textarea rows="4" class="w-full border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Share your experience with this product"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Your Name</label>
+                        <input type="text" class="w-full border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-300" placeholder="Enter your name">
+                    </div>
+                    <div class="flex space-x-4">
+                        <button type="button" onclick="closeReviewModal()" class="flex-1 border border-border text-text-secondary py-3 rounded-lg font-medium hover:bg-surface transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" class="flex-1 btn-primary">
+                            Submit Review
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    {% block extra_scripts %}
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active state from all tabs
+            const tabButtons = document.querySelectorAll('[id^="tab-"]');
+            tabButtons.forEach(button => {
+                button.classList.remove('border-primary', 'text-primary');
+                button.classList.add('border-transparent', 'text-text-secondary');
+            });
+            
+            // Show selected tab content
+            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+            
+            // Add active state to selected tab
+            const activeTab = document.getElementById(`tab-${tabName}`);
+            activeTab.classList.remove('border-transparent', 'text-text-secondary');
+            activeTab.classList.add('border-primary', 'text-primary');
+        }
+
+        // Image functionality
+        function changeMainImage(thumbnail) {
+            const mainImage = document.getElementById('main-image');
+            const thumbnailImg = thumbnail.querySelector('img');
+            
+            // Update main image
+            mainImage.src = thumbnailImg.src;
+            mainImage.alt = thumbnailImg.alt;
+            
+            // Update thumbnail borders
+            const thumbnails = document.querySelectorAll('.aspect-w-1.aspect-h-1');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('border-primary');
+                thumb.classList.add('border-transparent');
+            });
+            
+            thumbnail.classList.remove('border-transparent');
+            thumbnail.classList.add('border-primary');
+        }
+
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Quantity controls
+        function increaseQuantity() {
+            const quantityElement = document.getElementById('quantity');
+            let quantity = parseInt(quantityElement.textContent);
+            if (quantity < 3) { // Max stock is 3
+                quantityElement.textContent = quantity + 1;
+            }
+        }
+
+        function decreaseQuantity() {
+            const quantityElement = document.getElementById('quantity');
+            let quantity = parseInt(quantityElement.textContent);
+            if (quantity > 1) {
+                quantityElement.textContent = quantity - 1;
+            }
+        }
+
+        // Modal functions
+        function openSizeGuide() {
+            const modal = document.getElementById('size-guide-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeSizeGuide() {
+            const modal = document.getElementById('size-guide-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function openReviewModal() {
+            const modal = document.getElementById('review-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeReviewModal() {
+            const modal = document.getElementById('review-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Rating functionality
+        let selectedRating = 0;
+
+        function setRating(rating) {
+            selectedRating = rating;
+            const stars = document.querySelectorAll('.star-rating');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-border');
+                    star.classList.add('text-primary');
+                } else {
+                    star.classList.remove('text-primary');
+                    star.classList.add('text-border');
+                }
+            });
+        }
+
+        // Cart and wishlist functions
+        function addToCart() {
+            // Simulate adding to cart
+            alert('Product added to cart!');
+            // Update cart count
+            const cartCount = document.querySelector('.absolute.-top-1.-right-1');
+            let count = parseInt(cartCount.textContent);
+            cartCount.textContent = count + 1;
+        }
+
+        function addToWishlist() {
+            // Simulate adding to wishlist
+            alert('Product added to wishlist!');
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(event) {
+            const modals = ['image-modal', 'size-guide-modal', 'review-modal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-luxury');
+            } else {
+                header.classList.remove('shadow-luxury');
+            }
+        });
+    </script>
+
+    {% endblock %}

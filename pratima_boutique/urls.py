@@ -24,6 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('shop/', views.shop, name='shop'),
+    path('services/', views.services, name='services'),
+    path('account/', views.account, name='account'),
+    path('cart/', views.cart, name='cart'),
+    path('product/details/', views.product_individual, name='product_individual'),
 ]
 
 if settings.DEBUG:

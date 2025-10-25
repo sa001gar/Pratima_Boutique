@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+from urllib.parse import urlparse, parse_qsl
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-neue_&*o7i943s%&-878b4y-__2jue!4zw3lgzk)(c6&1e*fp7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -40,12 +46,19 @@ INSTALLED_APPS = [
     'core',
     'tailwind',
     'theme',
+
+    'whitenoise.runserver_nostatic',
 ]
 
 TAILWIND_APP_NAME = 'theme'
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
-# NPM_BIN_PATH = '/usr/bin/npm'
+
+
+if DEBUG:
+    NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+else:
+    NPM_BIN_PATH = '/usr/bin/npm'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,10 +103,17 @@ WSGI_APPLICATION = 'pratima_boutique.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT': 5432,
+        'OPTIONS': dict(parse_qsl(tmpPostgres.query)),
     }
 }
 

@@ -10,7 +10,6 @@ build/
 *.sqlite3
 db.sqlite3
 media/
-staticfiles/
 .DS_Store
 *.log
 .coverage

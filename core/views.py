@@ -12,7 +12,7 @@ def services(request):
     return HttpResponse("This is services page")
 
 def account(request):
-    return HttpResponse("This is account page")
+    return render(request,'pages/account.html')
 
 def cart(request):
     return HttpResponse("This is cart page")

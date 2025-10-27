@@ -15,3 +15,5 @@ media/
 .coverage
 htmlcov/
 node_modules/
+
+*.md

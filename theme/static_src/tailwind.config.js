@@ -43,6 +43,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            maxWidth: {
+                '7xl': '1536px',
+            },
             colors: {
                 primary: {
                     DEFAULT: "#D4AF37", // gold-signature

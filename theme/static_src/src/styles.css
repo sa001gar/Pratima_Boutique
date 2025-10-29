@@ -150,7 +150,7 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /* Additional utilities for Hero Carousel */
   .backdrop-blur-sm {
     backdrop-filter: blur(4px);

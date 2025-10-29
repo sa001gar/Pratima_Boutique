@@ -9,7 +9,7 @@ def shop(request):
     return render(request, 'pages/shop.html', {})
 
 def services(request):
-    return HttpResponse("This is services page")
+    return render(request, 'pages/services.html', {})
 
 def account(request):
     return render(request,'pages/account.html')

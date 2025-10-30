@@ -2,35 +2,41 @@
 {% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}
-        Pratima Boutique
-      {% endblock %}
-    </title>
-    {% comment %} <link href="{% static 'css/styles.css' %}" rel="stylesheet" /> {% endcomment %}
 
-    {% tailwind_css %}
-    
-    <!-- Alpine.js for interactive components -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    {% block extra_head %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    {% block title %}
+    Pratima Boutique
     {% endblock %}
-  </head>
+  </title>
+  {% comment %}
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" /> {% endcomment %}
 
-  <body class="bg-background text-text-primary">
-    {% include 'includes/layout/header.html' %}
+  {% tailwind_css %}
 
-    <!-- Main content -->
-    {% block content %}
-    {% endblock %}
+  <!-- Alpine.js for interactive components -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Extra scripts -->
-    <script src="{% static 'js/includes/header.js' %}"></script>
-    {% block extra_scripts %}
-    {% endblock %}
-  </body>
+  {% block extra_head %}
+  {% endblock %}
+</head>
+
+<body class="bg-background text-text-primary">
+  {% include 'includes/layout/header.html' %}
+
+  <!-- Main content -->
+  {% block content %}
+  {% endblock %}
+
+  {% include 'includes/layout/footer.html' %}
+
+
+  <!-- Extra scripts -->
+  <script src="{% static 'js/includes/header.js' %}"></script>
+  {% block extra_scripts %}
+  {% endblock %}
+</body>
+
 </html>
